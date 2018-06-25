@@ -1,0 +1,14 @@
+#This finds 99.99% of all errors. 
+#What it cannot find is corruption that involves only the data file
+myisamchk tbl_name
+
+#This finds 99.999% of all errors. 
+#It first checks all index entries for errors and then reads through all rows. 
+#It calculates a checksum for all key values in the rows 
+#and verifies that the checksum matches the checksum for the keys in the index tree.
+myisamchk -m tbl_name
+
+
+#This does a complete and thorough check of all data (-e means “extended check”). 
+#It does a check-read of every key for each row to verify that they indeed point to the correct row
+myisamchk -e tbl_name

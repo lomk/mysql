@@ -1,0 +1,15 @@
+#dump all databases
+mysqldump --all-databases > dump.sql
+
+#dump only specific databases
+mysqldump --databases db1 db2 db3 > dump.sql
+
+#dump a single database
+mysqldump --databases test > dump.sql
+mysqldump test > dump.sql
+
+#restore db from system console
+mysql < dump.sql
+
+#restore from mysql console
+source dump.sql
